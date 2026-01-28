@@ -1,11 +1,12 @@
-const CACHE_NAME = 'romaneios-cache-v1';
-const DYNAMIC_CACHE = 'romaneios-dynamic-v1';
+const CACHE_NAME = 'romaneios-cache-v3';
+const DYNAMIC_CACHE = 'romaneios-dynamic-v3';
 
 const ASSETS_TO_CACHE = [
-  './',
-  './index.html',
-  './manifest.json',
-  './icon.svg'
+  '/',
+  '/index.html',
+  '/manifest.json',
+  '/icon.svg'
+  // icon-192.png and icon-512.png will be cached by the browser via manifest automatically
 ];
 
 // Install Event: Cache core static assets
@@ -38,7 +39,6 @@ self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
 
   // Strategy for esm.sh (External Dependencies) -> Stale While Revalidate
-  // This allows the app to load fast from cache, but updates libraries in background
   if (url.hostname.includes('esm.sh') || url.hostname.includes('cdn.tailwindcss.com') || url.hostname.includes('flaticon')) {
     event.respondWith(
       caches.open(DYNAMIC_CACHE).then((cache) => {
