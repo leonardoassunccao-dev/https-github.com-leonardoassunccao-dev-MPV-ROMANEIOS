@@ -1,5 +1,5 @@
-const CACHE_NAME = 'romaneios-cache-v4';
-const DYNAMIC_CACHE = 'romaneios-dynamic-v4';
+const CACHE_NAME = 'romaneios-cache-v5';
+const DYNAMIC_CACHE = 'romaneios-dynamic-v5';
 
 const ASSETS_TO_CACHE = [
   '/',
