@@ -1,7 +1,7 @@
 {
   "name": "Conferência de Romaneios",
   "short_name": "Romaneios",
-  "description": "MVP para registrar conferência de romaneios, veículos e notas.",
+  "description": "App de conferência logística",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
