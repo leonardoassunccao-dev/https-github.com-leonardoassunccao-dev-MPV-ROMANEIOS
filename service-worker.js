@@ -1,12 +1,12 @@
-const CACHE_NAME = 'romaneios-cache-v3';
-const DYNAMIC_CACHE = 'romaneios-dynamic-v3';
+const CACHE_NAME = 'romaneios-cache-v4';
+const DYNAMIC_CACHE = 'romaneios-dynamic-v4';
 
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
   '/manifest.json',
-  '/icon.svg'
-  // icon-192.png and icon-512.png will be cached by the browser via manifest automatically
+  '/icon-192.png',
+  '/icon-512.png'
 ];
 
 // Install Event: Cache core static assets

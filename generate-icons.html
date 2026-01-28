@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerador de Ícones PWA</title>
+    <style>
+        body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; padding: 20px; background: #f0f9ff; }
+        .card { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); max-width: 500px; text-align: center; }
+        button { background: #2563eb; color: white; border: none; padding: 10px 20px; border-radius: 8px; font-size: 16px; cursor: pointer; margin: 10px; transition: background 0.2s; }
+        button:hover { background: #1d4ed8; }
+        canvas { border: 1px solid #ccc; margin: 10px; display: none; }
+        p { color: #475569; margin-bottom: 20px; }
+        .preview { margin: 20px; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Passo Final: Gerar Ícones</h2>
+        <p>1. Clique nos botões abaixo para baixar os ícones PNG.</p>
+        <p>2. Salve-os na pasta raiz do seu projeto (junto com index.html).</p>
+        
+        <!-- Embedded Source SVG matching your project's icon.svg -->
+        <div class="preview">
+            <svg id="sourceSvg" width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#2563eb;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#1d4ed8;stop-opacity:1" />
+                </linearGradient>
+              </defs>
+              <rect x="0" y="0" width="512" height="512" rx="120" fill="url(#grad1)" />
+              <path d="M100 160 H340 V300 H100 Z" fill="white" />
+              <path d="M340 200 H400 L440 240 V300 H340 Z" fill="white" />
+              <circle cx="170" cy="330" r="45" fill="white" opacity="0.4" />
+              <circle cx="390" cy="330" r="45" fill="white" opacity="0.4" />
+              <circle cx="170" cy="330" r="25" fill="white" />
+              <circle cx="390" cy="330" r="25" fill="white" />
+              <path d="M180 230 L210 260 L280 190" fill="none" stroke="#2563eb" stroke-width="35" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </div>
+
+        <div>
+            <button onclick="downloadIcon(192)">Baixar icon-192.png</button>
+            <button onclick="downloadIcon(512)">Baixar icon-512.png</button>
+        </div>
+    </div>
+
+    <canvas id="canvas"></canvas>
+
+    <script>
+        function downloadIcon(size) {
+            const svg = document.getElementById('sourceSvg');
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext('2d');
+            
+            canvas.width = size;
+            canvas.height = size;
+            
+            const svgData = new XMLSerializer().serializeToString(svg);
+            const img = new Image();
+            
+            img.onload = function() {
+                ctx.drawImage(img, 0, 0, size, size);
+                const a = document.createElement('a');
+                a.download = `icon-${size}.png`;
+                a.href = canvas.toDataURL('image/png');
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            };
+            
+            img.src = 'data:image/svg+xml;base64,' + btoa(svgData);
+        }
+    </script>
+</body>
+</html>
