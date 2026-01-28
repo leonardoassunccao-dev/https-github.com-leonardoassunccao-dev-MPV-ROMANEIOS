@@ -12,13 +12,14 @@
     
     <title>Conferência de Romaneios - MVP</title>
     
-    <!-- PWA Configuration - Force Root Path -->
+    <!-- PWA Configuration -->
     <link rel="manifest" href="/manifest.json" />
     
     <!-- Icons -->
     <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
     <link rel="apple-touch-icon" href="/icon-192.png">
 
+    <!-- Tailwind CSS (CDN for MVP Speed) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -36,58 +37,38 @@
       }
     </script>
     <style>
-      /* Mobile UX improvements */
-      html {
-        -webkit-tap-highlight-color: transparent;
-      }
-      body {
-        overscroll-behavior-y: none; /* Prevent pull-to-refresh on mobile app feel */
-      }
-      input, select, textarea {
-        font-size: 16px !important; /* Prevent iOS zoom on focus */
-      }
-      
-      /* Safe Area Support for Notches and Home Bars */
-      .safe-top {
-        padding-top: env(safe-area-inset-top);
-      }
-      .safe-bottom {
-        padding-bottom: env(safe-area-inset-bottom);
-      }
-
+      html { -webkit-tap-highlight-color: transparent; }
+      body { overscroll-behavior-y: none; }
+      input, select, textarea { font-size: 16px !important; }
+      .safe-top { padding-top: env(safe-area-inset-top); }
+      .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
       @media print {
-        .no-print {
-          display: none !important;
-        }
-        .print-only {
-          display: block !important;
-        }
-        body {
-          background-color: white !important;
-          color: black !important;
-        }
-        .page-break {
-          page-break-after: always;
-        }
+        .no-print { display: none !important; }
+        .print-only { display: block !important; }
+        body { background-color: white !important; color: black !important; }
+        .page-break { page-break-after: always; }
       }
     </style>
   <script type="importmap">
 {
   "imports": {
-    "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/",
     "recharts": "https://esm.sh/recharts@^3.7.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
     "uuid": "https://esm.sh/uuid@^13.0.0",
+    "jspdf": "https://esm.sh/jspdf@^4.0.0",
+    "jspdf-autotable": "https://esm.sh/jspdf-autotable@^5.0.7",
     "firebase/": "https://esm.sh/firebase@^12.8.0/",
-    "jspdf": "https://esm.sh/jspdf@2.5.1",
-    "jspdf-autotable": "https://esm.sh/jspdf-autotable@3.5.29"
+    "vite": "https://esm.sh/vite@^7.3.1",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
   }
 }
 </script>
 </head>
   <body class="bg-gray-50 text-gray-900 dark:bg-darkbg dark:text-gray-100 transition-colors duration-200 select-none md:select-auto">
     <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
   </body>
 </html>

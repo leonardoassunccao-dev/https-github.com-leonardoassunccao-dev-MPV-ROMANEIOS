@@ -17,7 +17,8 @@ root.render(
 // Register Service Worker for PWA
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./service-worker.js')
+    // Vite puts files in public/ at the root of dist/, so we register /service-worker.js
+    navigator.serviceWorker.register('/service-worker.js')
       .then((registration) => {
         console.log('ServiceWorker registration successful with scope: ', registration.scope);
       })

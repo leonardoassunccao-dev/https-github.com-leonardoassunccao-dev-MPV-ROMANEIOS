@@ -1,40 +1,8 @@
 {
-  "cleanUrls": true,
   "rewrites": [
     {
-      "source": "/manifest.json",
-      "destination": "/manifest.json"
-    },
-    {
-      "source": "/icon-192.png",
-      "destination": "/icon-192.png"
-    },
-    {
-      "source": "/icon-512.png",
-      "destination": "/icon-512.png"
-    },
-    {
-      "source": "/service-worker.js",
-      "destination": "/service-worker.js"
-    },
-    {
-      "source": "/((?!assets/|.*\\..*).*)",
+      "source": "/((?!assets/|manifest.json|icon-192.png|icon-512.png|icon.svg|service-worker.js|favicon.ico).*)",
       "destination": "/index.html"
-    }
-  ],
-  "headers": [
-    {
-      "source": "/manifest.json",
-      "headers": [
-        { "key": "Content-Type", "value": "application/manifest+json" },
-        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
-      ]
-    },
-    {
-      "source": "/(icon-192.png|icon-512.png)",
-      "headers": [
-        { "key": "Content-Type", "value": "image/png" }
-      ]
     }
   ]
 }
